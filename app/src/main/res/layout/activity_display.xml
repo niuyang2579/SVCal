@@ -7,17 +7,40 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context="com.niuyang.svcal.DisplayActivity">
-
     <TextView
-            android:id="@+id/result"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="result"/>
+            android:text="行李传送带车"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="南区"/>
+        <TextView
+            android:id="@+id/lugcov_s"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="北区"/>
+        <TextView
+            android:id="@+id/lugcov_n"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <Button
             android:id="@+id/back"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="back"/>
+            android:text="返回"/>
 
 </LinearLayout>

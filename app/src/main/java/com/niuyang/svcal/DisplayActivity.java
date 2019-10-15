@@ -18,7 +18,6 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        tv_result=(TextView)findViewById(R.id.result);
         btn_back=(Button) findViewById(R.id.back);
 
         Intent intent=getIntent();
