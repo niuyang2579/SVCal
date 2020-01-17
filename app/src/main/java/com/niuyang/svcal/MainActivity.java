@@ -157,66 +157,76 @@ public class MainActivity extends AppCompatActivity {
                 ptime[5] = strcvtf(et_f_ptime);
 
                 for(int i=0;i<13;++i){
-
+                    for(int j=0;j<2;++j){
+                        result[i][j]=Cal(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,i,j);
+                    }
                 }
             }
         });
     }
-    private float Cal(int svtype, int sorn){
+    private float Cal(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int svtype, int sorn){
         switch (svtype){
-            case 0: { return Cal_lugcov(sorn); }
-            case 1: { return Cal_lugtra(sorn); }
-            case 2: { return Cal_psgsta(sorn); }
-            case 3: { return Cal_airtra(sorn); }
-            case 4: { return Cal_powser(sorn); }
-            case 5: { return Cal_airser(sorn); }
-            case 6: { return Cal_cwater(sorn); }
-            case 7: { return Cal_dwater(sorn); }
-            case 8: { return Cal_lifpla(sorn); }
-            case 9: { return Cal_aircon(sorn); }
-            case 10: { return Cal_deicev(sorn); }
-            case 11: { return Cal_disabv(sorn); }
-            case 12: { return Cal_transv(sorn); }
+            case 0: { return Cal_lugcov(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 1: { return Cal_lugtra(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 2: { return Cal_psgsta(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 3: { return Cal_airtra(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 4: { return Cal_powser(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 5: { return Cal_airser(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 6: { return Cal_cwater(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 7: { return Cal_dwater(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 8: { return Cal_lifpla(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 9: { return Cal_aircon(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 10: { return Cal_deicev(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 11: { return Cal_disabv(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
+            case 12: { return Cal_transv(south,north,sch_time,advance_time,adjust_time,maintain_number,maintain_co,rate,qty,ptime,sorn); }
         }
         return 0;
     }
-    private float Cal_lugcov(int sorn){
+    private float Cal_lugcov(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn){
+        float sum = 0, result;
+        for(int i=0;i<6;++i){
+            sum+=rate[i]*qty[i]*(sch_time+advance_time+ptime[i]);
+        }
+        if(sorn==0)
+            result=south*sum/60*maintain_co;
+        else
+            result=north*sum/60*maintain_co;
+        return result;
+    }
+    private float Cal_lugtra(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn) {
         return 6;
     }
-    private float Cal_lugtra(int sorn) {
+    private float Cal_psgsta(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_psgsta(int sorn)  {
+    private float Cal_airtra(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_airtra(int sorn)  {
+    private float Cal_powser(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_powser(int sorn)  {
+    private float Cal_airser(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_airser(int sorn)  {
+    private float Cal_cwater(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_cwater(int sorn)  {
+    private float Cal_dwater(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_dwater(int sorn)  {
+    private float Cal_lifpla(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_lifpla(int sorn)  {
+    private float Cal_aircon(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_aircon(int sorn)  {
+    private float Cal_deicev(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_deicev(int sorn)  {
+    private float Cal_disabv(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
-    private float Cal_disabv(int sorn)  {
-        return 6;
-    }
-    private float Cal_transv(int sorn)  {
+    private float Cal_transv(float south, float north, float sch_time, float advance_time, float adjust_time, float maintain_number, float maintain_co, float[] rate, float[] qty, float[] ptime, int sorn)  {
         return 6;
     }
     private float strcvtf(EditText et){
